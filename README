@@ -1,0 +1,15 @@
+Mirror of http://mujintou.org.uk/projects/decomb.zip
+to make sure the package is preserved in the event of
+it disappearing from its host.
+
+Build instructions on Ubuntu:
+sudo apt-get install cmake ninja-build checkinstall
+
+cmake -G "Ninja" -DCMAKE_ASM_NASM_COMPILER=yasm
+ninja
+
+sudo checkinstall --pkgname=avxdecomb --pkgversion="1:$(grep \
+VERSION src/version.h | cut -f2 -d "\"")" --backup=no \
+--deldoc=yes --delspec=yes --deldesc=yes --strip=yes \
+--stripso=yes --addso=yes --fstrans=no --default \
+cp libdecomb.so /usr/local/lib/avxsynth
